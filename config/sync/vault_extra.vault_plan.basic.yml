@@ -1,0 +1,10 @@
+uuid: d9fdbe09-d036-42d8-ab65-1e4f12f1e001
+langcode: en
+status: true
+dependencies: {  }
+id: basic
+label: Basic
+storage_limit_mb: 1024
+price_usd: 4.99
+description: '1GB of storage, ideal for individuals with a handful of documents and photos.'
+weight: 1

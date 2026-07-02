@@ -1,0 +1,10 @@
+uuid: a9544f81-e787-4c90-9903-6f6ad8241475
+langcode: en
+status: true
+dependencies: {  }
+id: free
+label: Free
+storage_limit_mb: 100
+price_usd: 0.0
+description: 'Get started with 100MB of private storage.'
+weight: 0

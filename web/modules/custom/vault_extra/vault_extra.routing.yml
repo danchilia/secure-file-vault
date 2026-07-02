@@ -1,3 +1,43 @@
+vault_extra.landing:
+  path: '/vault/welcome'
+  defaults:
+    _controller: '\Drupal\vault_extra\Controller\LandingController::view'
+    _title: 'Secure File Vault'
+  requirements:
+    _access: 'TRUE'
+
+entity.vault_plan.collection:
+  path: '/admin/config/vault/plans'
+  defaults:
+    _entity_list: 'vault_plan'
+    _title: 'Vault Plans'
+  requirements:
+    _permission: 'administer vault plans'
+
+entity.vault_plan.add_form:
+  path: '/admin/config/vault/plans/add'
+  defaults:
+    _entity_form: 'vault_plan.add'
+    _title: 'Add plan'
+  requirements:
+    _permission: 'administer vault plans'
+
+entity.vault_plan.edit_form:
+  path: '/admin/config/vault/plans/{vault_plan}'
+  defaults:
+    _entity_form: 'vault_plan.edit'
+    _title: 'Edit plan'
+  requirements:
+    _permission: 'administer vault plans'
+
+entity.vault_plan.delete_form:
+  path: '/admin/config/vault/plans/{vault_plan}/delete'
+  defaults:
+    _entity_form: 'vault_plan.delete'
+    _title: 'Delete plan'
+  requirements:
+    _permission: 'administer vault plans'
+
 vault_extra.favorites:
   path: '/vault/favorites'
   defaults:

@@ -20,5 +20,6 @@ permissions:
   - 'access vault shared page'
   - 'administer nodes'
   - 'administer users'
+  - 'administer vault plans'
   - 'bypass node access'
   - 'use vault file sharing'

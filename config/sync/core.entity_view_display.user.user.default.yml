@@ -1,0 +1,27 @@
+uuid: 5c003d51-93f3-45f2-b656-de429df866bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.user.user.field_vault_plan
+  module:
+    - user
+id: user.user.default
+targetEntityType: user
+bundle: user
+mode: default
+content:
+  field_vault_plan:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  member_for:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden: {  }

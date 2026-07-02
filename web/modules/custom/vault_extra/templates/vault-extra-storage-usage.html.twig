@@ -1,16 +1,24 @@
 {#
 /**
  * @file
- * Displays a user's storage usage as a labeled progress bar.
+ * Displays a user's plan and storage usage as a labeled progress bar.
  *
  * Available variables:
  * - used_formatted: Human-readable amount of storage used.
  * - quota_formatted: Human-readable storage quota.
  * - percent: Percentage of quota used (0-100).
  * - severity: One of 'normal', 'warning', 'full'.
+ * - plan_label: The user's current plan name, or null.
+ * - price_formatted: The plan's price, formatted (e.g. "$9.99 / mo" or "Free").
  */
 #}
 <div class="vault-extra-storage-usage">
+  {% if plan_label %}
+    <div class="vault-extra-storage-usage__plan">
+      <span class="vault-extra-badge vault-extra-badge--plan">{{ plan_label }}</span>
+      <span class="vault-extra-storage-usage__price">{{ price_formatted }}</span>
+    </div>
+  {% endif %}
   <div class="vault-extra-storage-usage__label">
     <span>{{ 'Storage used'|t }}</span>
     <span>{{ used_formatted }} / {{ quota_formatted }}</span>

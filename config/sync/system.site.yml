@@ -4,11 +4,11 @@ langcode: en
 uuid: 848caf23-d4bf-4192-9a54-3aac2efd4f68
 name: 'Secure File Vault'
 mail: admin@example.com
-slogan: ''
+slogan: 'Upload, organize, and share your files with confidence.'
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /vault/welcome
 admin_compact_mode: false
 weight_select_max: 100
 default_langcode: en

@@ -1,0 +1,6 @@
+entity.vault_plan.collection:
+  title: 'Vault Plans'
+  description: 'Manage storage plans (Free, Basic, Standard, Premium) and assign them to users.'
+  route_name: entity.vault_plan.collection
+  parent: system.admin_config_system
+  weight: 10

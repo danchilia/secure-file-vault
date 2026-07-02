@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: premium
+label: Premium
+storage_limit_mb: 20480
+price_usd: 19.99
+description: '20GB of storage for power users and larger video files.'
+weight: 3

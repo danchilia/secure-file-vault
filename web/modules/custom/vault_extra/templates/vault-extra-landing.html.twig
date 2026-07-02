@@ -1,0 +1,63 @@
+{#
+/**
+ * @file
+ * Public marketing landing page for the Secure File Vault.
+ *
+ * Available variables:
+ * - is_authenticated: Whether the current user is logged in.
+ * - primary_cta / secondary_cta: Each an array with 'label' and 'url'.
+ */
+#}
+<div class="vault-landing">
+
+  <section class="vault-hero">
+    <div class="vault-hero__inner">
+      <span class="vault-hero__eyebrow">{{ 'Private file storage'|t }}</span>
+      <h1 class="vault-hero__title">{{ 'Upload your files securely, right here.'|t }}</h1>
+      <p class="vault-hero__subtitle">
+        {{ 'Every file you upload is private by default — only you can see it, unless you choose to share it with someone you trust.'|t }}
+      </p>
+      <div class="vault-hero__actions">
+        <a href="{{ primary_cta.url }}" class="btn-vault btn-vault--primary">{{ primary_cta.label }}</a>
+        <a href="{{ secondary_cta.url }}" class="btn-vault btn-vault--ghost">{{ secondary_cta.label }}</a>
+      </div>
+      <ul class="vault-hero__trust">
+        <li><span class="vault-hero__trust-icon" aria-hidden="true">&#128274;</span>{{ 'Private by default'|t }}</li>
+        <li><span class="vault-hero__trust-icon" aria-hidden="true">&#9201;</span>{{ 'Optional expiration dates'|t }}</li>
+        <li><span class="vault-hero__trust-icon" aria-hidden="true">&#128279;</span>{{ 'Share with one click'|t }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="vault-section">
+    <h2 class="vault-section__title">{{ 'How it works'|t }}</h2>
+    <div class="vault-feature-grid">
+      <div class="vault-feature-card">
+        <div class="vault-feature-card__number">1</div>
+        <h3>{{ 'Upload'|t }}</h3>
+        <p>{{ 'Add PDFs, documents, photos, or ZIP archives. Files are stored outside the public web root, never publicly accessible.'|t }}</p>
+      </div>
+      <div class="vault-feature-card">
+        <div class="vault-feature-card__number">2</div>
+        <h3>{{ 'Organize'|t }}</h3>
+        <p>{{ 'Sort files into Documents, Photos, Work, or Personal, and find anything instantly with search.'|t }}</p>
+      </div>
+      <div class="vault-feature-card">
+        <div class="vault-feature-card__number">3</div>
+        <h3>{{ 'Share, on your terms'|t }}</h3>
+        <p>{{ 'Share a file with one specific registered user. Revoke access any time. No public links, ever.'|t }}</p>
+      </div>
+      <div class="vault-feature-card">
+        <div class="vault-feature-card__number">4</div>
+        <h3>{{ 'Stay in control'|t }}</h3>
+        <p>{{ 'Track your storage usage, favorite important files, and set expiration dates so old uploads clean themselves up.'|t }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="vault-cta-band">
+    <h2>{{ 'Ready to upload your first file?'|t }}</h2>
+    <a href="{{ primary_cta.url }}" class="btn-vault btn-vault--primary btn-vault--large">{{ primary_cta.label }}</a>
+  </section>
+
+</div>

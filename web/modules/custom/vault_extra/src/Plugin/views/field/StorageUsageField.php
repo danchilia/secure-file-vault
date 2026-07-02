@@ -25,12 +25,15 @@ class StorageUsageField extends FieldPluginBase {
 
     /** @var \Drupal\vault_extra\Service\StorageCalculator $calculator */
     $calculator = \Drupal::service('vault_extra.storage_calculator');
-    $used = $calculator->getUsedBytes((int) $node->getOwnerId());
-    $quota = $calculator->getQuotaBytes();
+    $uid = (int) $node->getOwnerId();
+    $used = $calculator->getUsedBytes($uid);
+    $quota = $calculator->getQuotaBytes($uid);
+    $plan = $calculator->getPlan($uid);
 
-    return $this->t('@used / @quota', [
+    return $this->t('@used / @quota (@plan)', [
       '@used' => format_size($used),
       '@quota' => format_size($quota),
+      '@plan' => $plan ? $plan->label() : $this->t('No plan'),
     ]);
   }
 

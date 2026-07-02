@@ -21,7 +21,7 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: 'vault/[date:custom:Y]-[date:custom:m]'
-  file_extensions: 'pdf docx doc odt txt png jpg jpeg gif zip'
-  max_filesize: '52428800'
+  file_extensions: 'pdf docx doc odt txt png jpg jpeg gif zip mp4 mov webm mkv avi'
+  max_filesize: '2048 MB'
   description_field: false
 field_type: file

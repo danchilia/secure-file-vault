@@ -9,3 +9,7 @@ access vault admin files page:
   restrict access: true
 use vault file sharing:
   title: 'Share own vault files with other registered users'
+administer vault plans:
+  title: 'Administer vault storage plans'
+  description: 'Create, edit, and delete storage plans, and assign plans to any user.'
+  restrict access: true

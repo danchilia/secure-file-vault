@@ -1,0 +1,20 @@
+uuid: 93f359f7-03f1-4e12-8f78-001d7fe08264
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+    - vault_extra
+id: user.field_vault_plan
+field_name: field_vault_plan
+entity_type: user
+type: entity_reference
+settings:
+  target_type: vault_plan
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

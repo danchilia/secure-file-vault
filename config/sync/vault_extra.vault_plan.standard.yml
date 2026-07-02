@@ -1,0 +1,10 @@
+uuid: 1d25eab8-091f-40a1-8fcd-eda621d705b0
+langcode: en
+status: true
+dependencies: {  }
+id: standard
+label: Standard
+storage_limit_mb: 5120
+price_usd: 9.99
+description: '5GB of storage, room for larger files including short videos.'
+weight: 2

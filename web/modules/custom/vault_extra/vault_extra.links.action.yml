@@ -1,0 +1,5 @@
+entity.vault_plan.add_form:
+  route_name: entity.vault_plan.add_form
+  title: 'Add plan'
+  appears_on:
+    - entity.vault_plan.collection

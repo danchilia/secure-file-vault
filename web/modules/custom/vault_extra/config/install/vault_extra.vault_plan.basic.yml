@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: basic
+label: Basic
+storage_limit_mb: 1024
+price_usd: 4.99
+description: '1GB of storage, ideal for individuals with a handful of documents and photos.'
+weight: 1

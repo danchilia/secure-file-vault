@@ -1,0 +1,22 @@
+vault_extra.vault_plan.*:
+  type: config_entity
+  label: 'Vault plan'
+  mapping:
+    id:
+      type: string
+      label: 'Machine name'
+    label:
+      type: label
+      label: 'Plan name'
+    storage_limit_mb:
+      type: integer
+      label: 'Storage limit (MB)'
+    price_usd:
+      type: float
+      label: 'Price (USD / month)'
+    description:
+      type: string
+      label: 'Description'
+    weight:
+      type: integer
+      label: 'Weight'

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_vault_plan
+  module:
+    - vault_extra
+id: user.user.field_vault_plan
+field_name: field_vault_plan
+entity_type: user
+bundle: user
+label: 'Vault plan'
+description: 'The storage plan this user is assigned to. Leave empty to use the Free plan.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:vault_plan'
+  handler_settings: {  }
+field_type: entity_reference

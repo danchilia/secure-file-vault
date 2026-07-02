@@ -7,9 +7,11 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\TypedData\TypedDataInterface;
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 
@@ -33,6 +35,8 @@ function vault_extra_theme($existing, $type, $theme, $path) {
         'quota_formatted' => NULL,
         'percent' => 0,
         'severity' => 'normal',
+        'plan_label' => NULL,
+        'price_formatted' => NULL,
       ],
     ],
     'vault_extra_file_list' => [
@@ -41,7 +45,28 @@ function vault_extra_theme($existing, $type, $theme, $path) {
         'items' => [],
       ],
     ],
+    'vault_extra_landing' => [
+      'variables' => [
+        'is_authenticated' => FALSE,
+        'primary_cta' => NULL,
+        'secondary_cta' => NULL,
+      ],
+    ],
   ];
+}
+
+/**
+ * Implements hook_page_attachments().
+ *
+ * Loads the vault theme CSS on every front-end page, not just the pages
+ * this module renders directly, so core pages (login, register, node
+ * forms) get the same branding. Deliberately excluded from the admin
+ * theme (Claro) so the backend keeps its standard, unbranded look.
+ */
+function vault_extra_page_attachments(array &$attachments) {
+  if (\Drupal::theme()->getActiveTheme()->getName() === \Drupal::config('system.theme')->get('default')) {
+    $attachments['#attached']['library'][] = 'vault_extra/vault_extra';
+  }
 }
 
 /**
@@ -178,8 +203,10 @@ function vault_extra_user_view(array &$build, UserInterface $account, $display, 
 
   /** @var \Drupal\vault_extra\Service\StorageCalculator $calculator */
   $calculator = \Drupal::service('vault_extra.storage_calculator');
-  $used = $calculator->getUsedBytes((int) $account->id());
-  $quota = $calculator->getQuotaBytes();
+  $uid = (int) $account->id();
+  $used = $calculator->getUsedBytes($uid);
+  $plan = $calculator->getPlan($uid);
+  $quota = $plan ? $plan->getStorageLimitBytes() : \Drupal\vault_extra\Service\StorageCalculator::FALLBACK_QUOTA_BYTES;
   $percent = $quota > 0 ? min(100, (int) round(($used / $quota) * 100)) : 0;
 
   $severity = 'normal';
@@ -196,6 +223,8 @@ function vault_extra_user_view(array &$build, UserInterface $account, $display, 
     '#quota_formatted' => format_size($quota),
     '#percent' => $percent,
     '#severity' => $severity,
+    '#plan_label' => $plan ? $plan->label() : NULL,
+    '#price_formatted' => $plan && $plan->getPriceUsd() > 0 ? sprintf('$%.2f / mo', $plan->getPriceUsd()) : t('Free'),
     '#weight' => -10,
   ];
 }
@@ -239,9 +268,9 @@ function vault_extra_node_form_quota_validate(array &$form, FormStateInterface $
     }
   }
 
-  if ($used + (int) $file->getSize() > $calculator->getQuotaBytes()) {
-    $form_state->setErrorByName('field_vault_document', t('This upload would exceed your storage quota of %quota. You have used %used so far.', [
-      '%quota' => format_size($calculator->getQuotaBytes()),
+  if ($used + (int) $file->getSize() > $calculator->getQuotaBytes($uid)) {
+    $form_state->setErrorByName('field_vault_document', t('This upload would exceed your storage quota of %quota. You have used %used so far. Upgrade your plan to store larger files.', [
+      '%quota' => format_size($calculator->getQuotaBytes($uid)),
       '%used' => format_size($used),
     ]));
   }
@@ -273,4 +302,29 @@ function vault_extra_preprocess_node(array &$variables) {
   elseif ($diff_days <= 7) {
     $variables['vault_expiration_badge'] = ['label' => t('Expires in @days days', ['@days' => $diff_days]), 'class' => 'vault-extra-badge--expiring-soon'];
   }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ *
+ * Only an account with 'administer vault plans' may change a user's
+ * assigned plan. Anyone who can already view the user's profile may see
+ * which plan they're on (it's shown alongside storage usage).
+ */
+function vault_extra_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?TypedDataInterface $items = NULL) {
+  if ($field_definition->getName() !== 'field_vault_plan') {
+    return AccessResult::neutral();
+  }
+
+  if ($operation === 'edit') {
+    // AccessResult::allowedIfHasPermission() would only return ALLOWED or
+    // NEUTRAL — never FORBIDDEN — and Drupal's field access aggregation
+    // treats an all-neutral vote as allowed by default. We must return an
+    // explicit forbidden to actually block non-admins from editing this.
+    return $account->hasPermission('administer vault plans')
+      ? AccessResult::allowed()
+      : AccessResult::forbidden('Only accounts with the administer vault plans permission may change a user\'s plan.');
+  }
+
+  return AccessResult::neutral();
 }

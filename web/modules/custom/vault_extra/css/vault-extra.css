@@ -1,64 +1,405 @@
+/**
+ * Secure File Vault brand styling.
+ * Design tokens follow a "trustworthy security" palette: deep blue primary,
+ * teal accent, restrained neutrals. Layered on top of Olivero (which is
+ * already re-tinted blue via olivero.settings:base_primary_color) rather
+ * than fighting it.
+ */
+
+:root {
+  --vault-navy: #0f2a4a;
+  --vault-blue: #2563eb;
+  --vault-blue-dark: #1d4ed8;
+  --vault-teal: #0d9488;
+  --vault-teal-dark: #0f766e;
+  --vault-ink: #111827;
+  --vault-slate: #475569;
+  --vault-cloud: #f4f7fb;
+  --vault-line: #e2e8f0;
+  --vault-white: #ffffff;
+  --vault-amber: #b45309;
+  --vault-amber-bg: #fef3c7;
+  --vault-red: #b91c1c;
+  --vault-red-bg: #fee2e2;
+  --vault-green: #047857;
+  --vault-green-bg: #d1fae5;
+  --vault-radius: 10px;
+  --vault-shadow: 0 4px 16px rgba(15, 42, 74, 0.08);
+}
+
+/* ---------------------------------------------------------------------
+ * Buttons
+ * ------------------------------------------------------------------- */
+
+.btn-vault {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75em 1.5em;
+  border-radius: var(--vault-radius);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 0.06s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-vault--primary {
+  background: var(--vault-teal);
+  color: var(--vault-white);
+}
+
+.btn-vault--primary:hover,
+.btn-vault--primary:focus {
+  background: var(--vault-teal-dark);
+  color: var(--vault-white);
+  box-shadow: var(--vault-shadow);
+}
+
+.btn-vault--ghost {
+  background: transparent;
+  color: var(--vault-white);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.btn-vault--ghost:hover,
+.btn-vault--ghost:focus {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--vault-white);
+}
+
+.btn-vault--large {
+  padding: 1em 2.25em;
+  font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------------------
+ * Landing page: hero
+ * ------------------------------------------------------------------- */
+
+.vault-landing {
+  max-width: 100%;
+}
+
+.vault-hero {
+  background: linear-gradient(135deg, var(--vault-navy) 0%, var(--vault-blue-dark) 60%, var(--vault-blue) 100%);
+  color: var(--vault-white);
+  padding: 4.5rem 1.5rem 4rem;
+  text-align: center;
+}
+
+.vault-hero__inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.vault-hero__eyebrow {
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #93c5fd;
+  margin-bottom: 1rem;
+}
+
+.vault-hero__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  color: var(--vault-white);
+}
+
+.vault-hero__subtitle {
+  font-size: 1.15rem;
+  color: #dbeafe;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.vault-hero__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.vault-hero__trust {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
+  color: #bfdbfe;
+}
+
+.vault-hero__trust li {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.vault-hero__trust-icon {
+  font-size: 1.1em;
+}
+
+/* ---------------------------------------------------------------------
+ * Landing page: feature grid + CTA band
+ * ------------------------------------------------------------------- */
+
+.vault-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.vault-section__title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--vault-navy);
+  margin-bottom: 2.5rem;
+}
+
+.vault-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.vault-feature-card {
+  background: var(--vault-white);
+  border: 1px solid var(--vault-line);
+  border-radius: var(--vault-radius);
+  padding: 1.75rem;
+  box-shadow: var(--vault-shadow);
+}
+
+.vault-feature-card__number {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--vault-teal);
+  color: var(--vault-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.vault-feature-card h3 {
+  margin: 0 0 0.5rem;
+  color: var(--vault-navy);
+}
+
+.vault-feature-card p {
+  color: var(--vault-slate);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.vault-cta-band {
+  background: var(--vault-cloud);
+  border-top: 1px solid var(--vault-line);
+  border-bottom: 1px solid var(--vault-line);
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+}
+
+.vault-cta-band h2 {
+  color: var(--vault-navy);
+  margin: 0 0 1.5rem;
+  font-size: 1.6rem;
+}
+
+/* ---------------------------------------------------------------------
+ * Storage usage bar (profile page + admin dashboard)
+ * ------------------------------------------------------------------- */
+
 .vault-extra-storage-usage {
-  max-width: 320px;
-  margin: 1em 0;
+  max-width: 360px;
+  margin: 1.25em 0;
+  background: var(--vault-white);
+  border: 1px solid var(--vault-line);
+  border-radius: var(--vault-radius);
+  padding: 1rem 1.25rem;
 }
 
 .vault-extra-storage-usage__label {
   display: flex;
   justify-content: space-between;
   font-size: 0.9em;
-  margin-bottom: 0.25em;
+  color: var(--vault-slate);
+  margin-bottom: 0.5em;
 }
 
 .vault-extra-storage-usage__bar {
-  background: #e2e2e2;
-  border-radius: 4px;
+  background: var(--vault-line);
+  border-radius: 999px;
   height: 10px;
   overflow: hidden;
 }
 
 .vault-extra-storage-usage__fill {
-  background: #2b7de9;
+  background: var(--vault-teal);
   height: 100%;
+  transition: width 0.3s ease;
 }
 
 .vault-extra-storage-usage__fill--warning {
-  background: #e9a72b;
+  background: var(--vault-amber);
 }
 
 .vault-extra-storage-usage__fill--full {
-  background: #e92b2b;
+  background: var(--vault-red);
 }
+
+/* ---------------------------------------------------------------------
+ * File lists (Favorites / Shared with Me)
+ * ------------------------------------------------------------------- */
 
 .vault-extra-file-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  border: 1px solid var(--vault-line);
+  border-radius: var(--vault-radius);
+  overflow: hidden;
+  background: var(--vault-white);
 }
 
 .vault-extra-file-list__item {
-  border-bottom: 1px solid #e2e2e2;
-  padding: 0.6em 0;
+  border-bottom: 1px solid var(--vault-line);
+  padding: 0.9em 1.1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1em;
 }
 
+.vault-extra-file-list__item:last-child {
+  border-bottom: none;
+}
+
+.vault-extra-file-list__item:hover {
+  background: var(--vault-cloud);
+}
+
 .vault-extra-badge {
   display: inline-block;
-  padding: 0.1em 0.5em;
-  border-radius: 3px;
-  font-size: 0.8em;
-  background: #eee;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  background: var(--vault-cloud);
+  color: var(--vault-slate);
+  border: 1px solid var(--vault-line);
 }
 
 .vault-extra-badge--expired {
-  background: #f8d7da;
-  color: #842029;
+  background: var(--vault-red-bg);
+  color: var(--vault-red);
+  border-color: transparent;
 }
 
 .vault-extra-badge--expiring-soon {
-  background: #fff3cd;
-  color: #664d03;
+  background: var(--vault-amber-bg);
+  color: var(--vault-amber);
+  border-color: transparent;
+}
+
+.vault-extra-badge--plan {
+  background: var(--vault-navy);
+  color: var(--vault-white);
+  border-color: transparent;
+  font-size: 0.85em;
+}
+
+.vault-extra-storage-usage__plan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75em;
+}
+
+.vault-extra-storage-usage__price {
+  font-weight: 600;
+  color: var(--vault-slate);
+}
+
+/* ---------------------------------------------------------------------
+ * General polish: forms and tables site-wide, so login/register/upload
+ * pages feel consistent with the branded pages above.
+ * ------------------------------------------------------------------- */
+
+.region-content .container-inline,
+.region-content form {
+  max-width: 720px;
+}
+
+.region-content table {
+  border: 1px solid var(--vault-line);
+  border-radius: var(--vault-radius);
+  overflow: hidden;
+  box-shadow: var(--vault-shadow);
+}
+
+.region-content table thead th {
+  background: var(--vault-navy);
+  color: var(--vault-white);
+}
+
+.region-content .form-submit,
+.region-content input[type="submit"] {
+  background: var(--vault-teal);
+  border-color: var(--vault-teal);
+}
+
+.region-content .form-submit:hover,
+.region-content input[type="submit"]:hover {
+  background: var(--vault-teal-dark);
+  border-color: var(--vault-teal-dark);
+}
+
+/* The My Files / Admin Vault Files Views tables have 7-8 columns and will
+ * not fit a phone screen; let them scroll horizontally within their own
+ * box instead of breaking the page layout or squashing columns unreadably. */
+.region-content .view-content {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.region-content .view-content table {
+  min-width: 640px;
+}
+
+/* ---------------------------------------------------------------------
+ * Responsive adjustments
+ * ------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+  .vault-hero {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .vault-hero__actions .btn-vault {
+    width: 100%;
+  }
+
+  .vault-hero__actions {
+    flex-direction: column;
+  }
+
+  .vault-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .vault-extra-file-list__item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
