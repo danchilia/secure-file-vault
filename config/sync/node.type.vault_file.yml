@@ -1,0 +1,11 @@
+uuid: 672cbc6e-1933-40a2-9a9d-f4278f06373a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Vault File'
+type: vault_file
+description: 'A private file uploaded to the Secure File Vault by a registered user.'
+help: null
+new_revision: false
+preview_mode: 1
+display_submitted: false

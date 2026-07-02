@@ -1,0 +1,23 @@
+uuid: 41c52c67-ec98-4b90-b264-7ea1e7be579f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expiration_date
+    - node.type.vault_file
+  module:
+    - datetime
+_core:
+  default_config_hash: bfq0H6I2wjVKb3nkp5iiHiWDXVQyKKZHmn73ACkcBYU
+id: node.vault_file.field_expiration_date
+field_name: field_expiration_date
+entity_type: node
+bundle: vault_file
+label: 'Expiration date'
+description: 'Optional. After this date the file is automatically unpublished by cron.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

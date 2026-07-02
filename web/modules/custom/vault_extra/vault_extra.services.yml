@@ -1,0 +1,4 @@
+services:
+  vault_extra.storage_calculator:
+    class: Drupal\vault_extra\Service\StorageCalculator
+    arguments: ['@entity_type.manager']

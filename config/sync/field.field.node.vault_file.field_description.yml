@@ -1,0 +1,22 @@
+uuid: f9eba1c6-83fe-4def-bf1a-2957870c1411
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_description
+    - node.type.vault_file
+  module:
+    - text
+id: node.vault_file.field_description
+field_name: field_description
+entity_type: node
+bundle: vault_file
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,76 @@
+uuid: baf695a2-a7f5-49eb-9554-621edd5a0c53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vault_file.field_category
+    - field.field.node.vault_file.field_description
+    - field.field.node.vault_file.field_expiration_date
+    - field.field.node.vault_file.field_vault_document
+    - node.type.vault_file
+  module:
+    - datetime
+    - file
+    - text
+id: node.vault_file.default
+targetEntityType: node
+bundle: vault_file
+mode: default
+content:
+  field_category:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_description:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_expiration_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_vault_document:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  author: true
+  created: true
+  promote: true
+  sticky: true

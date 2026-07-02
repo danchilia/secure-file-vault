@@ -1,0 +1,58 @@
+uuid: 4609d314-75df-4709-86f6-98b696560136
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vault_file.field_category
+    - field.field.node.vault_file.field_description
+    - field.field.node.vault_file.field_expiration_date
+    - field.field.node.vault_file.field_vault_document
+    - node.type.vault_file
+  module:
+    - datetime
+    - file
+    - options
+    - text
+    - user
+id: node.vault_file.default
+targetEntityType: node
+bundle: vault_file
+mode: default
+content:
+  field_category:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_expiration_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_vault_document:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden: {  }

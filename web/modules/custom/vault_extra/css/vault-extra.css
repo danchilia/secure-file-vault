@@ -1,0 +1,64 @@
+.vault-extra-storage-usage {
+  max-width: 320px;
+  margin: 1em 0;
+}
+
+.vault-extra-storage-usage__label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+  margin-bottom: 0.25em;
+}
+
+.vault-extra-storage-usage__bar {
+  background: #e2e2e2;
+  border-radius: 4px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.vault-extra-storage-usage__fill {
+  background: #2b7de9;
+  height: 100%;
+}
+
+.vault-extra-storage-usage__fill--warning {
+  background: #e9a72b;
+}
+
+.vault-extra-storage-usage__fill--full {
+  background: #e92b2b;
+}
+
+.vault-extra-file-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.vault-extra-file-list__item {
+  border-bottom: 1px solid #e2e2e2;
+  padding: 0.6em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.vault-extra-badge {
+  display: inline-block;
+  padding: 0.1em 0.5em;
+  border-radius: 3px;
+  font-size: 0.8em;
+  background: #eee;
+}
+
+.vault-extra-badge--expired {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.vault-extra-badge--expiring-soon {
+  background: #fff3cd;
+  color: #664d03;
+}

@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Displays a simple list of vault files (used by the Favorites and Shared
+ * with Me pages).
+ *
+ * Available variables:
+ * - empty_message: Message shown when there are no items.
+ * - items: List of associative arrays with keys: title, url, category,
+ *   owner (optional), action (optional link markup).
+ */
+#}
+{% if items is empty %}
+  <p>{{ empty_message }}</p>
+{% else %}
+  <ul class="vault-extra-file-list">
+    {% for item in items %}
+      <li class="vault-extra-file-list__item">
+        <div>
+          {{ item.url|raw }}
+          <span class="vault-extra-badge">{{ item.category }}</span>
+          {% if item.owner is defined and item.owner %}
+            <span>{{ 'shared by @owner'|t({'@owner': item.owner}) }}</span>
+          {% endif %}
+        </div>
+        {% if item.action %}
+          <div>{{ item.action|raw }}</div>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

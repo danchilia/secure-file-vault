@@ -1,0 +1,54 @@
+vault_extra.favorites:
+  path: '/vault/favorites'
+  defaults:
+    _controller: '\Drupal\vault_extra\Controller\FavoritesController::list'
+    _title: 'My Favorites'
+  requirements:
+    _permission: 'access vault favorites page'
+
+vault_extra.shared_with_me:
+  path: '/vault/shared-with-me'
+  defaults:
+    _controller: '\Drupal\vault_extra\Controller\SharedWithMeController::list'
+    _title: 'Shared with Me'
+  requirements:
+    _permission: 'access vault shared page'
+
+vault_extra.favorite_toggle:
+  path: '/vault/favorite/{node}/toggle'
+  defaults:
+    _controller: '\Drupal\vault_extra\Controller\FavoriteToggleController::toggle'
+  requirements:
+    _permission: 'access vault favorites page'
+    _csrf_token: 'true'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+vault_extra.share_form:
+  path: '/vault/share/{node}'
+  defaults:
+    _form: '\Drupal\vault_extra\Form\ShareFileForm'
+    _title: 'Share file'
+  requirements:
+    _permission: 'use vault file sharing'
+    _custom_access: '\Drupal\vault_extra\Access\VaultShareAccessCheck::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+vault_extra.share_revoke:
+  path: '/vault/share/{node}/revoke/{shared_uid}'
+  defaults:
+    _controller: '\Drupal\vault_extra\Controller\ShareRevokeController::revoke'
+  requirements:
+    _permission: 'use vault file sharing'
+    _custom_access: '\Drupal\vault_extra\Access\VaultShareAccessCheck::access'
+    shared_uid: '\d+'
+    _csrf_token: 'true'
+  options:
+    parameters:
+      node:
+        type: entity:node

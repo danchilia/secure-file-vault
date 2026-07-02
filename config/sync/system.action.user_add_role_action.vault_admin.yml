@@ -1,0 +1,14 @@
+uuid: 9aeb9b2a-ab65-4c3d-923a-af4f0d2b5b5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vault_admin
+  module:
+    - user
+id: user_add_role_action.vault_admin
+label: 'Add the Vault Administrator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: vault_admin

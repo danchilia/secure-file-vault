@@ -1,0 +1,25 @@
+uuid: ce68f6aa-9502-4492-8cab-91fd832844a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.vault_file
+  module:
+    - node
+    - system
+    - vault_extra
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access vault favorites page'
+  - 'access vault my files page'
+  - 'access vault shared page'
+  - 'create vault_file content'
+  - 'delete own vault_file content'
+  - 'edit own vault_file content'
+  - 'use vault file sharing'

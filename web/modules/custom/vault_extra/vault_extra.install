@@ -1,0 +1,88 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Vault Extra module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function vault_extra_schema() {
+  $schema['vault_extra_favorite'] = [
+    'description' => 'Tracks which vault files a user has marked as favorites.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'uid' => [
+        'description' => 'The user who favorited the file.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'The favorited vault_file node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'uid_nid' => ['uid', 'nid'],
+    ],
+    'indexes' => [
+      'nid' => ['nid'],
+    ],
+  ];
+
+  $schema['vault_extra_share'] = [
+    'description' => 'Tracks vault files shared by their owner with other registered users.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'nid' => [
+        'description' => 'The shared vault_file node.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'owner_uid' => [
+        'description' => 'The uid of the file owner at the time of sharing.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'shared_with_uid' => [
+        'description' => 'The uid of the user the file is shared with.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'created' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+    'unique keys' => [
+      'nid_shared_with' => ['nid', 'shared_with_uid'],
+    ],
+    'indexes' => [
+      'shared_with_uid' => ['shared_with_uid'],
+      'owner_uid' => ['owner_uid'],
+    ],
+  ];
+
+  return $schema;
+}

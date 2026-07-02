@@ -1,0 +1,27 @@
+uuid: 3e09e3bc-bf8b-452c-9ce3-3e1dcee2a2a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_vault_document
+    - node.type.vault_file
+  module:
+    - file
+id: node.vault_file.field_vault_document
+field_name: field_vault_document
+entity_type: node
+bundle: vault_file
+label: File
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: 'vault/[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'pdf docx doc odt txt png jpg jpeg gif zip'
+  max_filesize: '52428800'
+  description_field: false
+field_type: file

@@ -1,0 +1,11 @@
+access vault my files page:
+  title: 'Access the My Files page'
+access vault favorites page:
+  title: 'Access the My Favorites page'
+access vault shared page:
+  title: 'Access the Shared with Me page'
+access vault admin files page:
+  title: 'Access the admin dashboard of all vault files'
+  restrict access: true
+use vault file sharing:
+  title: 'Share own vault files with other registered users'

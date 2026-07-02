@@ -1,0 +1,240 @@
+uuid: 4cdb02b2-705b-4c17-943a-27e4bbd64b1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - field.storage.node.field_expiration_date
+    - field.storage.node.field_vault_document
+    - node.type.vault_file
+    - system.menu.main
+  module:
+    - datetime
+    - file
+    - node
+    - options
+    - user
+    - vault_extra
+id: vault_my_files
+label: 'My Files'
+module: views
+description: "Lists the current user's own vault files with search and category filter."
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'My Files'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: 'File name'
+          settings:
+            link_to_entity: true
+        field_category:
+          id: field_category
+          table: node__field_category
+          field: field_category
+          entity_type: node
+          entity_field: field_category
+          plugin_id: field
+          label: Category
+          type: list_default
+        field_expiration_date:
+          id: field_expiration_date
+          table: node__field_expiration_date
+          field: field_expiration_date
+          entity_type: node
+          entity_field: field_expiration_date
+          plugin_id: field
+          label: Expires
+          type: datetime_default
+          settings:
+            format_type: medium
+        field_vault_document:
+          id: field_vault_document
+          table: node__field_vault_document
+          field: field_vault_document
+          entity_type: node
+          entity_field: field_vault_document
+          plugin_id: field
+          label: Download
+          type: file_default
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: field
+          label: Status
+          type: boolean
+          settings:
+            format: custom
+            format_custom_false: Expired/Unpublished
+            format_custom_true: Active
+        vault_extra_favorite_toggle:
+          id: vault_extra_favorite_toggle
+          table: node_field_data
+          field: vault_extra_favorite_toggle
+          plugin_id: vault_extra_favorite_toggle
+          label: Favorite
+        vault_extra_share_link:
+          id: vault_extra_share_link
+          table: node_field_data
+          field: vault_extra_share_link
+          plugin_id: vault_extra_share_link
+          label: Share
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          plugin_id: node_edit_link
+          label: Edit
+          text: Edit
+        delete_node:
+          id: delete_node
+          table: node
+          field: delete_node
+          relationship: none
+          plugin_id: node_delete_link
+          label: Delete
+          text: Delete
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: 25
+      access:
+        type: perm
+        options:
+          perm: 'access vault my files page'
+      cache:
+        type: tag
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          plugin_id: text_custom
+          empty: true
+          content: 'You have not uploaded any files yet.'
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+      arguments:
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          entity_type: node
+          entity_field: uid
+          plugin_id: numeric
+          default_action: default
+          default_argument_type: current_user
+          summary:
+            format: default_summary
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            vault_file: vault_file
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+          operator: contains
+          value: ''
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Search by file name'
+            operator: title_op
+            identifier: search
+            required: false
+        field_category:
+          id: field_category
+          table: node__field_category
+          field: field_category_value
+          entity_type: node
+          entity_field: field_category
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          exposed: true
+          expose:
+            operator_id: ''
+            label: Category
+            identifier: category
+            required: false
+            multiple: false
+      style:
+        type: table
+      row:
+        type: fields
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_expiration_date'
+        - 'config:field.storage.node.field_vault_document'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders: {  }
+      path: vault/my-files
+      menu:
+        type: normal
+        title: 'My Files'
+        menu_name: main
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_category'
+        - 'config:field.storage.node.field_expiration_date'
+        - 'config:field.storage.node.field_vault_document'

@@ -1,0 +1,42 @@
+# Drupal core, contrib, and generated scaffold files are managed by
+# Composer (see composer.json/composer.lock) and are not tracked here.
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+/web/sites/*/files/
+/web/sites/*/settings.local.php
+/web/sites/*/services.yml
+/web/.csslintrc
+/web/.eslintignore
+/web/.eslintrc.json
+/web/.ht.router.php
+/web/.htaccess
+/web/INSTALL.txt
+/web/README.md
+/web/index.php
+/web/robots.txt
+/web/update.php
+/web/web.config
+/web/sites/development.services.yml
+/web/sites/example.settings.local.php
+/web/sites/example.sites.php
+/web/sites/README.txt
+/web/modules/README.txt
+/web/themes/README.txt
+/web/profiles/README.txt
+
+# Site-specific secrets and local state. settings.php holds DB
+# credentials and is intentionally not committed; see README.md for the
+# handful of lines to add when you re-create it locally.
+/web/sites/default/settings.php
+/private_files/
+/.admin-credentials.txt
+
+# Editors / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

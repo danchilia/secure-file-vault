@@ -1,0 +1,4 @@
+vault_extra:
+  css:
+    theme:
+      css/vault-extra.css: {}

@@ -1,0 +1,33 @@
+uuid: 4c475af4-353e-408e-9cab-609ce3b0a394
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_category
+field_name: field_category
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: documents
+      label: Documents
+    -
+      value: photos
+      label: Photos
+    -
+      value: work
+      label: Work
+    -
+      value: personal
+      label: Personal
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

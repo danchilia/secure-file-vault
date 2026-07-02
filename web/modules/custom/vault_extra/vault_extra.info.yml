@@ -1,0 +1,10 @@
+name: 'Vault Extra'
+type: module
+description: 'Adds file expiration dates, per-user storage usage, favorites, and file sharing to the Secure File Vault.'
+package: 'Secure File Vault'
+core_version_requirement: ^10
+dependencies:
+  - node
+  - user
+  - file
+  - datetime

@@ -1,0 +1,24 @@
+uuid: adfb5c96-384c-4c5c-9177-7e93a8441fde
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+    - vault_extra
+id: vault_admin
+label: 'Vault Administrator'
+weight: 2
+is_admin: null
+permissions:
+  - 'access content'
+  - 'access content overview'
+  - 'access user profiles'
+  - 'access vault admin files page'
+  - 'access vault favorites page'
+  - 'access vault my files page'
+  - 'access vault shared page'
+  - 'administer nodes'
+  - 'administer users'
+  - 'bypass node access'
+  - 'use vault file sharing'

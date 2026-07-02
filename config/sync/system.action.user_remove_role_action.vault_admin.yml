@@ -1,0 +1,14 @@
+uuid: 87af083f-dd85-4c36-a36b-f9fb067343af
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.vault_admin
+  module:
+    - user
+id: user_remove_role_action.vault_admin
+label: 'Remove the Vault Administrator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: vault_admin
